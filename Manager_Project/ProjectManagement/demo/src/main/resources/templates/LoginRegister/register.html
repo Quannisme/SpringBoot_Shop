@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Shop</title>
+  <link rel="stylesheet" href="/login_register.css">
+  <!-- Font Awesome -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet" />
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" rel="stylesheet" />
+  <!-- MDB -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.4.2/mdb.min.css" rel="stylesheet" />
+  <!-- MDB -->
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.4.2/mdb.min.js"></script>
+</head>
+<style>
+  .required {
+    color: red;
+  }
+</style>
+<body>
+<header>
+  <a th:href="@{/LoginRegister/home}"><img src="/Logo.png" alt="Logo"></a>
+<!--  <img src="/Logo.png" alt="Logo">-->
+  <nav>
+    <ul id="main-menu">
+      <li><a th:href="@{/LoginRegister/list}">SHOP</a></li>
+      <li><a href="#">B RAY COLLAB'S</a></li>
+      <li><a th:href="@{/LoginRegister/new}">NEWS</a></li>
+      <li><a th:href="@{/LoginRegister/contact}">CONTACT</a></li>
+      <li><a th:href="@{/LoginRegister/about}">ABOUT</a></li>
+      <li><a th:href="@{/LoginRegister/history}">TRANSACTION</a></li>
+    </ul>
+  </nav>
+  <div class="header-container">
+    <div class="search-container">
+      <input type="text" placeholder="Tìm kiếm">
+      <button class="search-icon"><i class="fas fa-magnifying-glass"></i></button>
+    </div>
+    <button class="user-icon"><i class="fas fa-user"></i></button>
+    <button class="shopping-icon"><i class="fas fa-bag-shopping"></i></button>
+  </div>
+
+</header>
+
+<section>
+  <!-- Pills navs -->
+  <ul class="nav nav-pills nav-justified mb-3" id="ex1" role="tablist">
+    <li class="nav-item" role="presentation">
+      <a th:class="${action}=='login'?'nav-link active':'nav-link'" id="tab-login" data-mdb-toggle="pill" href="#pills-login" role="tab"
+         aria-controls="pills-login" aria-selected="true">Login</a>
+    </li>
+    <li class="nav-item" role="presentation">
+      <a th:class="${action}=='register'?'nav-link active':'nav-link'" id="tab-register" data-mdb-toggle="pill" href="#pills-register" role="tab"
+         aria-controls="pills-register" aria-selected="false">Register</a>
+    </li>
+  </ul>
+  <!-- Pills navs -->
+  <!-- Pills content -->
+<!--  đăng nhập-->
+  <div class="tab-content">
+    <div th:class="${action}=='login'?'tab-pane fade show active':'tab-pane fade'" id="pills-login" role="tabpanel" aria-labelledby="tab-login" >
+      <form th:action="@{/LoginRegister/login}" method="post" th:object="${login}">
+        <div class="text-center mb-3">
+          <p>Sign in </p>
+        </div>
+
+<!--        <p class="text-center">or:</p>-->
+
+        <!-- Email input -->
+        <div class="form-outline mb-4" >
+          <input type="text" id="loginName" class="form-control" name="userName" th:field="*{userName}"/>
+          <label class="form-label" for="loginName">Email or username</label>
+        </div>
+
+        <!-- Password input -->
+        <div class="form-outline mb-4">
+          <input type="password" id="loginPassword" class="form-control" th:field="*{password}"/>
+          <label class="form-label" for="loginPassword">Password</label>
+        </div>
+
+        <!-- 2 column grid layout -->
+        <div class="row mb-4">
+          <div class="col-md-6 d-flex justify-content-center">
+            <!-- Checkbox -->
+            <div class="form-check mb-3 mb-md-0">
+              <input class="form-check-input" type="checkbox" value="" id="loginCheck" checked />
+              <label class="form-check-label" for="loginCheck"> Remember me </label>
+            </div>
+          </div>
+
+<!--          <div class="col-md-6 d-flex justify-content-center">-->
+<!--            &lt;!&ndash; Simple link &ndash;&gt;-->
+<!--            <a href="#!">Forgot password?</a>-->
+<!--          </div>-->
+        </div>
+
+        <!-- Submit button -->
+        <button type="submit" class="btn btn-primary btn-block mb-4">Sign in</button>
+
+        <!-- Register buttons -->
+        <div class="text-center">
+          <p>Not a member? <a href="#!">Register</a></p>
+        </div>
+      </form>
+    </div>
+<!--    register-->
+    <div th:class="${action}=='register'?'tab-pane fade show active':'tab-pane fade'"  id="pills-register" role="tabpanel" aria-labelledby="tab-register">
+      <form th:action="@{/LoginRegister/register}" method="post" th:object="${register}" onsubmit="return validatePassword()">
+        <div class="text-center mb-3">
+          <p>Sign up</p>
+        </div>
+
+<!--        <p class="text-center">or:</p>-->
+
+        <!-- Name input -->
+        <div class="form-outline mb-4">
+          <input type="text" id="registerName" class="form-control" th:field="*{name}" required/>
+          <label class="form-label" for="registerName">Name <span class="required">*</span></label>
+          <div class="text-danger" th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></div>
+        </div>
+
+        <!-- Username input -->
+        <div class="form-outline mb-4">
+          <input type="text" id="registerUsername" class="form-control" th:field="*{userName}" required/>
+          <label class="form-label" for="registerUsername">Username <span class="required">*</span></label>
+          <div class="text-danger" th:if="${#fields.hasErrors('userName')}" th:errors="*{userName}"></div>
+        </div>
+
+        <!-- Email input -->
+        <div class="form-outline mb-4">
+          <input type="email" id="registerEmail" class="form-control" th:field="*{email}" required/>
+          <label class="form-label" for="registerEmail">Email <span class="required">*</span></label>
+          <div class="text-danger" th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></div>
+        </div>
+
+        <!-- Password input -->
+        <div class="form-outline mb-4">
+          <input type="password" id="registerPassword" class="form-control" th:field="*{password}"/>
+          <label class="form-label" for="registerPassword">Password</label>
+          <div class="text-danger" th:if="${#fields.hasErrors('password')}" th:errors="*{password}"></div>
+        </div>
+
+        <!-- Repeat Password input -->
+        <div class="form-outline mb-4">
+          <input type="password" id="registerRepeatPassword" class="form-control" />
+          <label class="form-label" for="registerRepeatPassword">Repeat password</label>
+        </div>
+
+        <!-- Checkbox -->
+        <div class="form-check d-flex justify-content-center mb-4">
+          <input class="form-check-input me-2" type="checkbox" value="" id="registerCheck" checked
+                 aria-describedby="registerCheckHelpText" />
+          <label class="form-check-label" for="registerCheck">
+            I have read and agree to the terms
+          </label>
+        </div>
+
+        <!-- Submit button -->
+        <button type="submit" class="btn btn-primary btn-block mb-3">Sign in</button>
+      </form>
+    </div>
+<!--    end register-->
+  </div>
+  <!-- Pills content -->
+</section>
+<footer class="footer">
+  <div class="footer-container">
+
+    <div class="footer-column">
+      <h2>Hệ Thống Cửa Hàng</h2>
+      <ul>
+        <i class="fas fa-map-marker-alt"></i> Chi Nhánh Hồ Chí Minh</p>
+        <p>Quận 10 <span class="subtext">-561 Sư Vạn Hạnh, Phường 13.</span></p>
+        <p>Quận 1 <span class="subtext">-The New Playground 26 Lý Tự Trọng,Phường Bến Nghé.</span></p>
+        <p>Quận 1 <span class="subtext">-Central Market 4 Phạm Ngũ Lão,Phường Phạm Ngũ Lão.</span></p>
+        <p>Quận Gò Vấp <span class="subtext">-326 Quang Trung, Phường 10.</span></p>
+        <i class="fas fa-map-marker-alt"></i> Chi Nhánh Biên Hòa: </ul><p>
+      <p>TP.Biên Hòa <span class="subtext">-151A Phan Trung, Phường Tân Mai.</span></p>
+      <i class="fas fa-map-marker-alt"></i> Chi Nhánh Bình Dương:</p>
+      <p>TP.Thủ Dầu Một <span class="subtext">-28 Yersin,Phường Hiệp Thành.</span></p>
+      <i class="fas fa-map-marker-alt"></i> Chi Nhánh Cần Thơ </p>
+      <p>Quận Ninh Kiều <span class="subtext">-52 Mẫu Thân,Phường An Phú.</span></p>
+      <i class="fas fa-map-marker-alt"></i> Chi Nhánh Hà Nội:</p>
+      <p>Đống Đa <span class="subtext">-49-53 Hồ Đắc Di,Phường Nam Đồng.</span></p>
+      <p><i class="fas fa-phone"></i> 0933 800 190 - 1900252557</p>
+      <p><i class="fas fa-envelope"></i> csteamdcs@gmail.com</p>
+      </ul>
+    </div>
+    <div class="footer-column">
+      <h2>Mạng Xã Hội</h2>
+      <div class="social-icons">
+        <a href="#"><i class="fab fa-facebook"></i></a>
+        <a href="#"><i class="fa-brands fa-youtube"></i></a>
+        <a href="#"><i class="fa-brands fa-instagram"></i>
+        </a>
+      </div>
+    </div>
+
+    <div>
+      <h2>Chính Sách</h2>
+      <div class="policy-list">
+        <li>Chính sách bảo mật</li>
+        <li>FAQ</li>
+        <li>Chính sách Thẻ Thành viên</li>
+        <li>Chính sách Bảo hành & Đổi trả</li>
+        <li>Chính sách giao hàng hóa tốc</li>
+      </div>
+    </div>
+
+    <div class="fanpage">
+      <h2>Fanpage</h2>
+      <img src="fanpage-image.jpg" alt="Fanpage"/>
+    </div>
+  </div>
+</footer>
+</body>
+<script>
+  function validatePassword() {
+    var password = document.getElementById("registerPassword").value;
+    var confirmPassword = document.getElementById("registerRepeatPassword").value;
+
+    if (password != confirmPassword) {
+      alert("Mật khẩu và mật khẩu nhập lại không khớp!");
+      return false;
+    }
+    return true;
+  }
+</script>
+
+
+</html>

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Giỏ hàng</title>
+    <link rel="stylesheet" href="giohang.css">
+</head>
+
+<body>
+    <div class="shopping-cart-container">
+        <h1>GIỎ HÀNG</h1>
+        <table>
+            <div class="shopping-cart-header">
+                <span class="header-item product-column">Sản phẩm</span>
+                <span class="header-item quantity-column">Số lượng</span>
+                <span class="header-item total-column">Tổng tiền</span>
+                <span class="header-item remove-column">Xóa</span>
+            </div>
+            <div class="shopping-cart-item">
+                <div class="product-column">
+                    <img src="ảnh áo" alt="tee" class="product-image">
+                    <div class="product-details">
+                        <div class="product-title">hood</div>
+                        <div class="product-size">Size XS</div>
+                        <div class="product-price">30.000₫</div>
+                    </div>
+                </div>
+                <div class="quantity-column">
+                    <div class="quantity-selector">
+                        <button type="button" class="decrease-quantity">&lt;</button>
+                        <input type="text" class="quantity-input" value="1" readonly>
+                        <button type="button" class="increase-quantity">&gt;</button>
+                    </div>
+                </div>
+                <div class="total-column">
+                    <div class="total-price">30.000₫</div>
+                </div>
+                <div class="remove-column">
+                    <button type="button" class="remove-item">🗑</button>
+                </div>
+            </div>
+            <div class="quantity-column">
+
+            </div>
+            <div class="total-column">
+            </div>
+        </table>
+    </div>
+    <div class="shopping-cart-footer">
+        <div class="total-amount">
+            <span class="amount"></span>
+        </div>
+    </div>
+    <div class="cart-total">
+        <div class="total-amount">
+            <span class="total-text">Tổng tiền</span>
+            <span class="total-price">30.000</span>
+        </div>
+        <div class="checkout-buttons">
+            <button class="continue-shopping-button">TIẾP TỤC MUA SẮM</button>
+            <button class="checkout-button" onclick="location.href='gan link trang thanh toan'">THANH TOÁN</button>
+            <!--gắn link thanh toan zô-->
+        </div>
+    </div>
+</body>
+
+</html>

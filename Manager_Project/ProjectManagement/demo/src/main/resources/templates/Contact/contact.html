@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/contact.css">
+  <!-- Font Awesome -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet" />
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" rel="stylesheet" />
+  <!-- MDB -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.4.2/mdb.min.css" rel="stylesheet" />
+  <!-- MDB -->
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.4.2/mdb.min.js"></script>
+  <title>Document</title>
+</head>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background: #f8f8f8;
+  }
+
+  .container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding-top: 20px;
+  }
+
+  .store-info h2 {
+    text-align: center;
+    font-size: 24px;
+    color: #333;
+    margin-bottom: 10px;
+  }
+
+  .store-info p {
+    text-align: center;
+    color: #666;
+    margin-bottom: 20px;
+  }
+
+  .branch {
+    background: #fff;
+    margin-bottom: 20px;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+
+  .branch h3 {
+    font-size: 20px;
+    color: #333;
+    margin-bottom: 10px;
+  }
+
+  .address {
+    margin-left: 20px;
+    line-height: 1.6;
+    color: #666;
+  }
+
+  .address p {
+    margin: 0;
+  }
+
+  .header-container {
+    display: flex;
+    justify-content: flex-end;
+    /* Aligns the search-container to the right */
+    padding: 10px;
+  }
+
+  .search-container {
+    margin-right: 10px;
+    /* Adjusts the margin to the right edge if needed */
+  }
+
+  .search-icon {
+    cursor: pointer;
+    background-color: transparent;
+    border: none;
+    padding: 5px;
+  }
+
+  input[type="text"] {
+    padding: 5px;
+    margin-right: 5px;
+    /* Spacing between the input field and the search button */
+  }
+
+  /* Responsive adjustments */
+  @media (max-width: 768px) {
+    .header-container {
+      justify-content: center;
+      /* Center the search container on small screens */
+    }
+  }
+  .shopping-icon {
+    position: relative;
+  }
+
+  #cart-count {
+    position: absolute;
+    top: -10px; /* Điều chỉnh vị trí lên trên để không che icon */
+    right: -10px; /* Điều chỉnh vị trí sang phải để không che icon */
+    background-color: cornflowerblue; /* Màu nền */
+    color: white; /* Màu chữ */
+    border-radius: 50%; /* Tạo hình tròn */
+    padding: 1px 3px; /* Giảm padding để làm nhỏ số lượng */
+    font-size: 10px; /* Giảm kích thước chữ */
+    min-width: 15px; /* Đặt chiều rộng tối thiểu cho thẻ */
+    height: 15px; /* Đặt chiều cao cho thẻ */
+    line-height: 15px; /* Đặt line-height để căn giữa chữ với thẻ */
+    text-align: center; /* Căn giữa chữ ngang */
+    border: 1px solid white; /* Thêm viền trắng nếu cần */
+  }
+</style>
+<header>
+  <a th:href="@{/LoginRegister/home}"><img src="/Logo.png" alt="Logo"></a>
+  <!--  <img src="/Logo.png" alt="Logo">-->
+  <nav>
+      <ul>
+        <li><a th:href="@{/LoginRegister/list}">SHOP</a></li>
+        <li><a href="#">B RAY COLLAB'S</a></li>
+        <li><a th:href="@{/LoginRegister/new}">NEWS</a></li>
+        <li><a th:href="@{/LoginRegister/contact}">CONTACT</a></li>
+        <li><a th:href="@{/LoginRegister/about}">ABOUT</a></li>
+        <li><a th:href="@{/LoginRegister/history}">TRANSACTION</a></li>
+      </ul>
+  </nav>
+  <div class="header-container">
+    <button class="user-icon">
+      <!-- If userName exists (user is logged in), show both icons with separate links -->
+      <a th:if="${userName != null}" th:href="@{/LoginRegister/profile}">
+        <i class="fas fa-user"></i> <!-- Link to profile -->
+      </a>
+      <a th:if="${userName != null}" th:href="@{/LoginRegister/logout}">
+        <i class="fa-solid fa-right-from-bracket"></i> <!-- Logout functionality -->
+      </a>
+      <!-- If userName doesn't exist (user is not logged in), link to auth -->
+      <a th:unless="${userName != null}" th:href="@{/LoginRegister/auth}">
+        <i class="fas fa-user"></i>
+      </a>
+    </button>
+    <button class="shopping-icon">
+      <a  th:href="@{/cart}">
+        <i class="fas fa-bag-shopping"></i>
+        <!--                <span id="cart-count" class="badge badge-pill badge-danger">10</span>-->
+        <span id="cart-count" th:if="${totalQuantity > 0}" th:text="${totalQuantity}" class="badge badge-pill badge-danger"></span>
+      </a>
+    </button>
+  </div>
+</header>
+<body>
+<div class="store-info centered">
+  <h2>Thông Tin Hệ Thống Cửa Hàng DirtyCoins</h2>
+  <p>Đăng bởi: Billy | 03/02/2023</p>
+</div>
+<div class="container">
+  <div class="store-info">
+    <h2>Hệ Thống Cửa Hàng</h2>
+  </div>
+</div>
+<div class="container">
+  <div class="store-info">
+    <h2>Chi Nhánh Hồ Chí Minh:</h2>
+    <p>561 Sư Vạn Hạnh, Phường 13, Quận 10</p>
+    <p>The New Playground 26 Lý Tự Trọng, Phường Bến Nghé, Quận 1</p>
+    <p>Gian 36 Central Market 4 Phạm Ngũ Lão, Phường Phạm Ngũ Lão, Quận 1</p>
+    <p>326 Quang Trung,Phường 10, Quận Gò Vấp</p>
+  </div>
+</div>
+<div class="dashes">---</div>
+<div class="container">
+  <div class="store-info">
+    <h2>Chi Nhánh Hà Nội:</h2>
+    <p>49-51 Hồ Đắc Di, Phường Nam Đồng, Quận Đống Đa</p>
+  </div>
+</div>
+<div class="dashes">---</div>
+<div class="container">
+  <div class="store-info">
+    <h2>Chi Nhánh Biên Hòa</h2>
+    <p>151A Phan Trung, Phường Tân Mai, Tp. Biên Hòa, Tỉnh Đồng Nai</p>
+  </div>
+</div>
+<div class="dashes">---</div>
+<div class="container">
+  <div class="store-info">
+    <h2>Chi Nhánh Bình Dương</h2>
+    <p>28 Yersin, Phường Hiệp Thành., TP. Thủ Dầu Một, Tỉnh Bình Dương</p>
+  </div>
+
+</div>
+<div class="dashes">---</div>
+<div class="container">
+  <div class="store-info">
+    <h2>Chi Nhánh Cần Thơ</h2>
+    <p>52 Mậu Thân, Phường An Phú, Quận Ninh Kiều, Tp. Cần Thơ</p>
+    <p>0933 800 190 - 1900252557</p>
+    <p>csteamdcs@gmail.com</p>
+  </div>
+</div>
+
+</body>
+<footer class="footer">
+  <div class="footer-container">
+
+    <div class="footer-column">
+      <h2>Hệ Thống Cửa Hàng</h2>
+      <ul>
+        <i class="fas fa-map-marker-alt"></i> Chi Nhánh Hồ Chí Minh</p>
+        <p>Quận 10 <span class="subtext">-561 Sư Vạn Hạnh, Phường 13.</span></p>
+        <p>Quận 1 <span class="subtext">-The New Playground 26 Lý Tự Trọng,Phường Bến Nghé.</span></p>
+        <p>Quận 1 <span class="subtext">-Central Market 4 Phạm Ngũ Lão,Phường Phạm Ngũ Lão.</span></p>
+        <p>Quận Gò Vấp <span class="subtext">-326 Quang Trung, Phường 10.</span></p>
+        <i class="fas fa-map-marker-alt"></i> Chi Nhánh Biên Hòa:
+      </ul>
+      <p>
+      <p>TP.Biên Hòa <span class="subtext">-151A Phan Trung, Phường Tân Mai.</span></p>
+      <i class="fas fa-map-marker-alt"></i> Chi Nhánh Bình Dương:</p>
+      <p>TP.Thủ Dầu Một <span class="subtext">-28 Yersin,Phường Hiệp Thành.</span></p>
+      <i class="fas fa-map-marker-alt"></i> Chi Nhánh Cần Thơ </p>
+      <p>Quận Ninh Kiều <span class="subtext">-52 Mẫu Thân,Phường An Phú.</span></p>
+      <i class="fas fa-map-marker-alt"></i> Chi Nhánh Hà Nội:</p>
+      <p>Đống Đa <span class="subtext">-49-53 Hồ Đắc Di,Phường Nam Đồng.</span></p>
+      <p><i class="fas fa-phone"></i> 0933 800 190 - 1900252557</p>
+      <p><i class="fas fa-envelope"></i> csteamdcs@gmail.com</p>
+      </ul>
+    </div>
+    <div class="footer-column">
+      <h2>Mạng Xã Hội</h2>
+      <div class="social-icons">
+        <a href="#"><i class="fab fa-facebook"></i></a>
+        <a href="#"><i class="fa-brands fa-youtube"></i></a>
+        <a href="#"><i class="fa-brands fa-instagram"></i>
+        </a>
+      </div>
+    </div>
+
+    <div>
+      <h2>Chính Sách</h2>
+      <div class="policy-list">
+        <li>Chính sách bảo mật</li>
+        <li>FAQ</li>
+        <li>Chính sách Thẻ Thành viên</li>
+        <li>Chính sách Bảo hành & Đổi trả</li>
+        <li>Chính sách giao hàng hóa tốc</li>
+      </div>
+    </div>
+
+    <div class="fanpage">
+      <h2>Fanpage</h2>
+      <img src="fanpage-image.jpg" alt="Fanpage" />
+    </div>
+
+  </div>
+</footer>
+
+</html>

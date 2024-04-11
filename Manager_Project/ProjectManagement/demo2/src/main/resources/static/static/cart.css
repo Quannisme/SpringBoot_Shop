@@ -1,0 +1,10 @@
+.buttons-container {
+    display: flex;
+    justify-content: space-between; /* Đặt một nút ở mỗi đầu */
+    align-items: center; /* Căn giữa theo chiều dọc nếu chúng có độ cao khác nhau */
+    margin-top: 20px; /* Điều chỉnh lề theo nhu cầu */
+}
+
+.button-left, .button-right {
+    flex: 1; /* Cho phép mỗi bên chiếm một nửa chiều rộng của container */
+}

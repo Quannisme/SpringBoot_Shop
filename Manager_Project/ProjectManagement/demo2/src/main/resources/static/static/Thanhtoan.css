@@ -1,0 +1,84 @@
+/* ... CSS code ... */
+
+/* Các điều chỉnh cần thêm vào hoặc sửa đổi */
+
+/*.checkout {*/
+/*    display: grid;*/
+/*    grid-template-columns: 2fr 1fr; !* Chia layout thành 2 cột *!*/
+/*    gap: 20px; !* Khoảng cách giữa các cột *!*/
+/*    !* ... other styles ... *!*/
+/*}*/
+
+.left-column, .right-column {
+    background: #fff;
+    padding: 20px;
+    border-radius: 5px;
+    /* ... other styles ... */
+}
+.right-column {
+    padding: 20px;
+    flex: 1.5; /* Tăng tỷ lệ flex từ 1 lên 1.5 */
+    /* Hoặc bạn có thể sử dụng width nếu bạn muốn một chiều rộng cụ thể */
+    /* width: 60%; */ /* Chỉ cần bỏ comment dòng này nếu bạn muốn đặt chiều rộng cố định */
+}
+
+
+/* Cập nhật phong cách cho các nút */
+button {
+    /* ... existing styles ... */
+    margin-top: 10px; /* Khoảng cách trên cùng cho nút */
+}
+
+/* Phong cách cho các trường đầu vào */
+input, select, textarea {
+    /* ... existing styles ... */
+    border: 1px solid #ccc;
+}
+
+/* Thêm shadow cho các cột */
+.left-column, .right-column {
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+/* Thêm icon bằng cách sử dụng pseudo-elements hoặc trực tiếp trong HTML */
+.form-group label::before {
+    content: url('path-to-icon.png'); /* Đường dẫn đến hình ảnh icon */
+    /* ... other styles ... */
+}
+
+/* Điều chỉnh responsive design */
+@media (max-width: 768px) {
+    .checkout {
+        grid-template-columns: 1fr; /* Chỉ duy trì 1 cột khi màn hình nhỏ */
+    }
+}
+
+/* ... more custom styles ... */
+.form-group {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 1px;
+}
+
+.discount-input {
+    padding: 10px;
+    margin-right: 5px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+}
+
+.apply-button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    background-color: #007bff;
+    color: white;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.apply-button:hover {
+    background-color: #0056b3;
+}

@@ -1,0 +1,213 @@
+body {
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f6f6f6;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 10%;
+    background-color: #ffffff;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+}
+
+
+nav ul {
+    list-style-type: none;
+    display: flex;
+    gap: 20px;
+    margin: 0;
+    padding: 0;
+}
+
+nav a {
+    text-decoration: none;
+    color: black;
+}
+
+nav a:hover {
+    color: #007BFF;  /* Màu xanh dành cho hover */
+    border-bottom: 2px solid #007BFF; /* Thêm gạch chân cho hiệu ứng hover */
+}
+
+.header-container {
+    display: flex;
+    align-items: center;
+    gap: 10px; /* Thêm khoảng cách giữa các phần tử con */
+}
+
+.search-container {
+    display: flex;
+    align-items: center;
+    background-color: #f1f1f1;
+    border-radius: 20px;
+    padding: 5px;
+}
+
+.search-container input[type="text"] {
+    border: none;
+    padding: 5px;
+    outline: none;
+    background-color: transparent;
+    width: 200px;
+}
+
+.search-icon, .user-icon, .shopping-icon {
+    border: none;
+    background-color: transparent;
+    outline: none;
+    cursor: pointer;
+    padding: 5px;
+}
+
+/* Xóa viền (box shadow) của các nút khi được nhấn */
+.search-icon:focus, .user-icon:focus, .shopping-icon:focus {
+    box-shadow: none;
+}
+
+/* Xóa viền của icon */
+.fas {
+    border: none;
+    outline: none;
+}
+
+section {
+    display: flex;
+    margin-top: 50px;
+    margin-bottom: 20px;
+    justify-content: center;
+    align-items: center;
+    min-height: calc(100vh - 100px); /* 100px is an estimated total height of header and footer */
+    background-color: #f6f6f6;
+}
+form {
+    background-color: #ffffff;
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 400px;
+}
+
+footer {
+    background-color: #f2f2f2;
+    padding: 20px;
+    text-align: center;
+    box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
+}
+.search-icon:hover {
+    background-color: #f1f1f1;
+    border-radius: 20px;
+}
+
+.search-icon i:hover {
+    color: #007BFF; /* Thay đổi màu của icon khi hover */
+}
+.user-icon:hover, .shopping-icon:hover {
+    background-color: #f1f1f1;
+    border-radius: 20px;
+}
+.btn-link:hover {
+    color: #007BFF; /* Màu xanh dành cho hover */
+}
+.tab-content {
+    background-color: #f8f9fa;
+    padding: 20px;
+    border-radius: 10px;
+}
+.btn-primary:hover {
+    background-color: #0056b3; /* Màu đậm hơn một chút so với màu ban đầu */
+}
+header {
+    padding: 10px 5%;
+}
+.form-check {
+    display: flex;
+    align-items: center; /* Align checkbox and label on the same line */
+    white-space: nowrap; /* Prevent wrapping of text */
+}
+
+.form-check-input {
+    margin-right: 0.5em; /* Add some space between the checkbox and the label */
+}
+
+section {
+    background-image: url("/emile.jpg");
+    background-position: center; /* Đặt hình ảnh ở trung tâm */
+    background-size: cover; /* Đảm bảo hình ảnh bao phủ toàn bộ khu vực mà không cần stretch */
+    background-repeat: no-repeat; /* Hình ảnh sẽ không lặp lại */
+}
+.footer {
+    background-color: #f1f1f1;
+    padding: 20px 0;
+    font-size: 14px;
+}
+.footer-container {
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 15px;
+}
+.footer-column {
+    margin: 10px;
+    min-width: 180px;
+}
+.footer-column h3 {
+    font-size: 16px;
+    color: #333;
+    margin-bottom: 15px;
+}
+.footer-column ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+.footer-column ul li {
+    margin-bottom: 10px;
+}
+.footer-column ul li a {
+    color: #666;
+    text-decoration: none;
+}
+.footer-column ul li a:hover {
+    text-decoration: underline;
+}
+.social-icons {
+    display: flex;
+}
+.social-icons img {
+    width: 24px;
+    margin-right: 10px;
+}
+.fanpage {
+    margin: 10px;
+    min-width: 180px;
+}
+.fanpage img {
+    width: 100%;
+    height: auto;
+}
+.policy-list {
+    list-style-type: disc;
+    padding-left: 20px;
+}
+
+.policy-list li {
+    margin-bottom: 5px;
+}
+.subtext {
+    font-size: 0.9em;
+    color: #666;
+
+}

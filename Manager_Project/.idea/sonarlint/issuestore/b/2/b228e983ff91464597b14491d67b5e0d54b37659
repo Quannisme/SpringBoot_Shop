@@ -1,0 +1,32 @@
+
+p
+java:S1192z"UDefine a constant instead of duplicating this literal "/Dainese/listProduct" 3 times.(é›Âôÿÿÿÿÿ
+d
+java:S1192x"IDefine a constant instead of duplicating this literal "products" 3 times.(«ÿš€üÿÿÿÿ
+m
+java:S11925"XDefine a constant instead of duplicating this literal "/LoginRegister/register" 3 times.(ûžÔ
+e
+java:S1192c"ODefine a constant instead of duplicating this literal "totalQuantity" 24 times.(›”Ð¦
+`
+java:S1192L"JDefine a constant instead of duplicating this literal "userName" 26 times.(ê´÷°
+b
+java:S1192M"GDefine a constant instead of duplicating this literal "userId" 3 times.( ºáþøÿÿÿÿ
+o	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(¥á„š
+Q	java:S125;"<This block of commented-out lines of code should be removed.(’®Œ¦
+V	java:S125D"<This block of commented-out lines of code should be removed.(éØ»Úûÿÿÿÿ
+Q	java:S125H"<This block of commented-out lines of code should be removed.(Å¥¼—
+Q	java:S125J"<This block of commented-out lines of code should be removed.(ÝÝÎõ
+V	java:S125O"<This block of commented-out lines of code should be removed.(Û…ƒžýÿÿÿÿ
+Q	java:S125T"<This block of commented-out lines of code should be removed.(™£Î†
+V	java:S125y"<This block of commented-out lines of code should be removed.(úµÆøÿÿÿÿÿ
+A	java:S106Ð"+Replace this use of System.out by a logger.(ÿ§ß 
+F	java:S106ã"+Replace this use of System.out by a logger.(ÄŒîÈüÿÿÿÿ
+F	java:S106ä"+Replace this use of System.out by a logger.(ŒÕ£ðûÿÿÿÿ
+W	java:S125ì"<This block of commented-out lines of code should be removed.(¨Æƒâüÿÿÿÿ
+F	java:S106ü"+Replace this use of System.out by a logger.(Èæ”ôüÿÿÿÿ
+F	java:S106Š"+Replace this use of System.out by a logger.(ƒ¬Šöúÿÿÿÿ
+F	java:S106"+Replace this use of System.out by a logger.(ÍÃ¯²üÿÿÿÿ
+F	java:S106“"+Replace this use of System.out by a logger.(ã‰Åãþÿÿÿÿ
+A	java:S106”"+Replace this use of System.out by a logger.(–×ÙÔ
+F	java:S106•"+Replace this use of System.out by a logger.(ª…Ö‚ÿÿÿÿÿ
+W	java:S125ž"<This block of commented-out lines of code should be removed.(«É²ýÿÿÿÿ

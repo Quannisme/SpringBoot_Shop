@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/list.css">
+    <!-- Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet" />
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" rel="stylesheet" />
+    <!-- MDB -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.4.2/mdb.min.css" rel="stylesheet" />
+    <!-- MDB -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.4.2/mdb.min.js"></script>
+    <title>Document</title>
+</head>
+<body>
+<header>
+    <a th:href="@{/LoginRegister/home}"><img src="/Logo.png" alt="Logo"></a>
+    <!--  <img src="/Logo.png" alt="Logo">-->
+    <nav id="menu">
+        <ul id="main-menu">
+            <li><a th:href="@{/LoginRegister/list}">SHOP</a>
+                <ul id="sub-menu">
+                    <li><a th:href="@{/LoginRegister/top}">TOP</a></li>
+                    <li><a th:href="@{/LoginRegister/bottom}">BOTTOM</a></li>
+                </ul>
+            </li>
+            <li><a href="#">B RAY COLLAB'S</a></li>
+            <li><a th:href="@{/LoginRegister/new}">NEWS</a></li>
+            <li><a th:href="@{/LoginRegister/contact}">CONTACT</a></li>
+            <li><a th:href="@{/LoginRegister/about}">ABOUT</a></li>
+            <li><a th:href="@{/LoginRegister/history}">TRANSACTION</a></li>
+        </ul>
+    </nav>
+    <div class="header-container">
+        <div class="search-container">
+            <input type="text" id="searchInput" placeholder="Tìm kiếm" oninput="searchByTitle()">
+            <button class="search-icon"><i class="fas fa-magnifying-glass"></i></button>
+        </div>
+        <button class="user-icon">
+            <!-- If userName exists (user is logged in), show both icons with separate links -->
+            <a th:if="${userName != null}" th:href="@{/LoginRegister/profile}">
+                <i class="fas fa-user"></i> <!-- Link to profile -->
+            </a>
+            <a th:if="${userName != null}" th:href="@{/LoginRegister/logout}">
+                <i class="fa-solid fa-right-from-bracket"></i> <!-- Logout functionality -->
+            </a>
+            <!-- If userName doesn't exist (user is not logged in), link to auth -->
+            <a th:unless="${userName != null}" th:href="@{/LoginRegister/auth}">
+                <i class="fas fa-user"></i>
+            </a>
+        </button>
+        <button class="shopping-icon">
+            <a  th:href="@{/cart}">
+                <i class="fas fa-bag-shopping"></i>
+                <!--                <span id="cart-count" class="badge badge-pill badge-danger">10</span>-->
+                <span id="cart-count" th:if="${totalQuantity > 0}" th:text="${totalQuantity}" class="badge badge-pill badge-danger"></span>
+            </a>
+        </button>
+    </div>
+</header>
+<section class="banner">
+    <img src="/Desktop-Áo-1-1520x988.png" alt="">
+</section>
+<div class="product-item" id="result">
+    <div class="product" th:each="product:${products}">
+        <a th:href="@{/LoginRegister/detail/__${product.id}__}" target="_blank">
+            <img th:src="@{${product.img}}">
+            <div class="detail">
+                <span th:text="${product.title}"></span>
+            </div>
+        </a>
+        <div class="prices">
+            <span th:text="${product.getFormat()}"></span>
+        </div>
+    </div>
+</div>
+<footer class="footer">
+    <div class="footer-container">
+
+        <div class="footer-column">
+            <h2>Hệ Thống Cửa Hàng</h2>
+            <ul>
+                <i class="fas fa-map-marker-alt"></i> Chi Nhánh Hồ Chí Minh</p>
+                <p>Quận 10 <span class="subtext">-561 Sư Vạn Hạnh, Phường 13.</span></p>
+                <p>Quận 1 <span class="subtext">-The New Playground 26 Lý Tự Trọng,Phường Bến Nghé.</span></p>
+                <p>Quận 1 <span class="subtext">-Central Market 4 Phạm Ngũ Lão,Phường Phạm Ngũ Lão.</span></p>
+                <p>Quận Gò Vấp <span class="subtext">-326 Quang Trung, Phường 10.</span></p>
+                <i class="fas fa-map-marker-alt"></i> Chi Nhánh Biên Hòa: </ul><p>
+            <p>TP.Biên Hòa <span class="subtext">-151A Phan Trung, Phường Tân Mai.</span></p>
+            <i class="fas fa-map-marker-alt"></i> Chi Nhánh Bình Dương:</p>
+            <p>TP.Thủ Dầu Một <span class="subtext">-28 Yersin,Phường Hiệp Thành.</span></p>
+            <i class="fas fa-map-marker-alt"></i> Chi Nhánh Cần Thơ </p>
+            <p>Quận Ninh Kiều <span class="subtext">-52 Mẫu Thân,Phường An Phú.</span></p>
+            <i class="fas fa-map-marker-alt"></i> Chi Nhánh Hà Nội:</p>
+            <p>Đống Đa <span class="subtext">-49-53 Hồ Đắc Di,Phường Nam Đồng.</span></p>
+            <p><i class="fas fa-phone"></i> 0933 800 190 - 1900252557</p>
+            <p><i class="fas fa-envelope"></i> csteamdcs@gmail.com</p>
+            </ul>
+        </div>
+        <div class="footer-column">
+            <h2>Mạng Xã Hội</h2>
+            <div class="social-icons">
+                <a href="#"><i class="fab fa-facebook"></i></a>
+                <a href="#"><i class="fa-brands fa-youtube"></i></a>
+                <a href="#"><i class="fa-brands fa-instagram"></i>
+                </a>
+            </div>
+        </div>
+
+        <div>
+            <h2>Chính Sách</h2>
+            <div class="policy-list">
+                <li>Chính sách bảo mật</li>
+                <li>FAQ</li>
+                <li>Chính sách Thẻ Thành viên</li>
+                <li>Chính sách Bảo hành & Đổi trả</li>
+                <li>Chính sách giao hàng hóa tốc</li>
+            </div>
+        </div>
+
+        <div class="fanpage">
+            <h2>Fanpage</h2>
+            <img src="fanpage-image.jpg" alt="Fanpage"/>
+        </div>
+
+    </div>
+</footer>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+<script>
+    function searchByTitle() {
+        let index = $("#searchInput").val();
+        $.ajax({
+            url: "http://localhost:8080/api/product/searchProduct",
+            data: {
+                index: index
+            },
+            type: "get",
+            dataType: "json",
+            success: function (res) {
+                console.log(res); // Debugging line
+                let result = "";
+                for (let i = 0; i < res.length; i++) {
+                    result += "<div class='product'>" +
+                        "<a href='/LoginRegister/detail/" + res[i].id + "' target='_blank'>" +
+                        "<img src='" + res[i].img + "'>" +
+                        "<div class='detail'>" +
+                        "<span>" + res[i].title + "</span>" +
+                        "</div></a>" +
+                        "<div class='prices'>" +
+                        "<span>" + res[i].prices + "</span>" +
+                        "</div>" +
+                        "</div>";
+                }
+                $("#result").html(result);
+            },
+            error: function (xhr, status, error) {
+                console.error("Error - Status:", status, "Detail:", error);
+            }
+        });
+    }
+
+</script>
+</body>
+</html>

@@ -1,0 +1,156 @@
+@import url("https://fonts.googleapis.com/css?family-Poppins: 200, 300, 400, 500, 600,700, 800, 900&display-swap");
+*{
+margin: 0;
+padding: 0;
+box-sizing: border-box;
+font-family: "Poppins", sans-serif;
+}
+body {
+display: flex;
+justify-content: center;
+align-items: center;
+background: linear-gradient(#4ba9e9 0, #4ba9e9 50%, #fff 50%, #fff 100%);
+min-height: 100vh;
+}
+ul {
+list-style: none;
+}
+.container{
+display: flex;
+flex-direction: row;
+}
+.card{
+position: relative;
+width: 300px;
+height: 400px;
+background: #0000;
+display: flex;
+box-shadow: 0 15px 45px rgba(0, 0, 0, 0.1);
+overflow: hidden;
+transition: .5s ease-in-out;
+margin-right: 20px;
+border-radius: 8px;
+}
+.card:hover{
+width: 600px;
+}
+.card .ingBx{
+    position: relative;
+    min-width: 300px;
+    height: 100%;
+    /* background: #fff; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 10;
+}
+img{
+    max-width: 100%;
+    transition: .5s ease-in-out;
+}
+/* .card:hover .ingBx img{
+    transform: rotate(-35deg) translateX(-20px);
+} */
+.card .details{
+    left: 300px;
+}
+.card .details::before{
+    content: '';
+    position: absolute;
+    left: 0;
+    width: 0;
+    height: 0;
+    border-top: 10px solid transparent;
+    border-bottom: 10px solid transparent;
+    border-left: 10px solid #fff;
+    z-index: 1;
+}
+.card .details h3{
+    color: #fff;
+    text-transform: uppercase;
+    font-family: 600;
+    font-size: 1.5em;
+    line-height: 1em;
+}
+.card .details h3 span{
+    font-size: 0.65em;
+    font-weight: 300;
+    opacity: 0.85;
+    text-transform: none;
+}
+.card .details h4{
+    color: #fff;
+    text-transform: uppercase;
+    font-family: 600;
+    font-size: 0.9em;
+    line-height: 1em;
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+
+P{
+    color: #fff;
+    font-size: 0.8em;
+    opacity: 0.85;
+}
+.size{
+    display: flex;
+    gap: 10px;
+}
+.size li {
+    list-style: none;
+    color: #fff;
+    font-size: 0.9em;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 2px solid #fff;
+    cursor: pointer;
+    font-weight: 500;
+    opacity: 0.5;
+    border-radius: 6px;
+}
+.size li:hover {
+    background:#fff;
+    color: #4ba9e9;
+    opacity: 1;
+    }
+.group {
+
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+    align-items: center;
+}
+    .card details h2 {
+    color: #fff;
+    text-transform: uppercase;
+    font-weight: 600;
+    font-size: 1.5em;
+    }
+    .card details h2 sup {
+    font-weight: 400;
+    font-size: 15px;
+    text-transform: none;
+    }
+    .card .details h2 small {
+        font-size: 0.75em;
+        }
+        .card .details a {
+        display: inline-flex;
+        padding: 10px 25px;
+        background:#fff;
+        font-weight: 500;
+        border-radius: 8px;
+        text-decoration: none;
+        text-transform: uppercase;
+        font-weight: 600;
+        transition: .3s ease;
+        color: #4ba9e9;
+        }
+        .card .details a:hover{
+        transform: translate(0,-7px);
+        }

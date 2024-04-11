@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="container">
+        <a th:href="@{/shop}" class="link-success">Return to shop</a>
+        <table class="table" th:if="${cart.products.size() > 0}">
+            <thead>
+                <tr>
+                    <th>Price</th>
+                    <th>Quantity</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="product: ${cart.products}">
+                    <td>
+                        <a th:href="@{/shop/detail/__${product.key.id}__}">
+                            <img width="80px" th:src="@{__${product.key.img}__}" alt="">
+                        </a>
+                    </td>
+                    <td th:text="${product.key.prices}"></td>
+                    <td>
+                        <select th:id="'quantity'+${product.key.id}" class="form-select form-select-sm"
+                            th:onchange="'changeQuantity('+${product.key.id}+')'">
+                            <option th:each="i : ${#numbers.sequence(1,100)}" th:value="${i}" th:text="${i}"
+                                th:selected="${i==product.value}"></option>
+                        </select>
+                    </td>
+                    <td><a class="btn btn-danger" th:href="@{/shop/delete/__${product.key.id}__}">X</a></td>
+                </tr>
+                <tr>
+                    <th>Total</th>
+                    <td th:text="${cart.getTotalPrice()}"></td>
+                </tr>
+            </tbody>
+        </table>
+        <h1 th:if="${cart.products.size() <= 0}">Empty Cart</h1>
+    </div>
+</body>
+
+</html>

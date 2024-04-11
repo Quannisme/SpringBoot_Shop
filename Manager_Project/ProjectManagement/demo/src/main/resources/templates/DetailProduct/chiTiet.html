@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/chitiet.css">
+  <!-- Font Awesome -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet" />
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" rel="stylesheet" />
+  <!-- MDB -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.4.2/mdb.min.css" rel="stylesheet" />
+  <!-- MDB -->
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.4.2/mdb.min.js"></script>
+  <title>Document</title>
+</head>
+<body>
+<header>
+  <!-- logo thương hiệu -->
+  <a th:href="@{/LoginRegister/home}"><img src="/Logo.png" alt="Logo"></a>
+  <nav>
+    <ul id="main-menu">
+      <li><a th:href="@{/LoginRegister/list}">SHOP</a>
+      </li>
+      <li><a href="#">B RAY COLLAB'S</a></li>
+      <li><a th:href="@{/LoginRegister/new}">NEWS</a></li>
+      <li><a th:href="@{/LoginRegister/contact}">CONTACT</a></li>
+      <li><a th:href="@{/LoginRegister/about}">ABOUT</a></li>
+      <li><a th:href="@{/LoginRegister/history}">TRANSACTION</a></li>
+    </ul>
+  </nav>
+  <div class="header-container">
+    <!--        <button class="user-icon">-->
+    <!--            <a th:if="${userName != null}" th:href="@{/LoginRegister/profile}"> &lt;!&ndash; Kiểm tra nếu userName đã tồn tại (đã đăng nhập) &ndash;&gt;-->
+    <!--                <i class="fas fa-user"></i>-->
+    <!--            </a>-->
+    <!--            <a th:unless="${userName != null}" th:href="@{/LoginRegister/auth}"> &lt;!&ndash; Kiểm tra nếu userName chưa tồn tại (chưa đăng nhập) &ndash;&gt;-->
+    <!--                <i class="fas fa-user"></i>-->
+    <!--            </a>-->
+    <!--        </button>-->
+    <button class="user-icon">
+      <!-- If userName exists (user is logged in), show both icons with separate links -->
+      <a th:if="${userName != null}" th:href="@{/LoginRegister/profile}">
+        <i class="fas fa-user"></i> <!-- Link to profile -->
+      </a>
+      <a th:if="${userName != null}" th:href="@{/LoginRegister/logout}">
+        <i class="fa-solid fa-right-from-bracket"></i> <!-- Logout functionality -->
+      </a>
+      <!-- If userName doesn't exist (user is not logged in), link to auth -->
+      <a th:unless="${userName != null}" th:href="@{/LoginRegister/auth}">
+        <i class="fas fa-user"></i>
+      </a>
+    </button>
+
+    <button class="shopping-icon">
+      <a  th:href="@{/cart}">
+        <i class="fas fa-bag-shopping"></i>
+        <!--                <span id="cart-count" class="badge badge-pill badge-danger">10</span>-->
+        <span id="cart-count" th:if="${totalQuantity > 0}" th:text="${totalQuantity}" class="badge badge-pill badge-danger"></span>
+      </a>
+    </button>
+  </div>
+  <div class="header-container">
+    <!-- <button class="user-icon"><i class="fas fa-user"></i></button>
+    <button class="shopping-icon"><i class="fas fa-bag-shopping"></i></button> -->
+  </div>
+</header>
+<!--chi tiết sản phẩm-->
+<form id="myForm" th:action="@{/LoginRegister/add/{productId}(productId=${product.id})}" method="post" th:data-productid="${product.id}">
+<div class= "row justify-content-center align-items-center">
+  <article class="col-sm-9">
+    <div class="row d-flex align-items-center">
+      <div class = "col-sm-5 mx-auto">
+        <img th:src="@{__${product.img}__}" width="450" height="450" alt=" " style="margin-top: 150px; margin-left: 10px;" ; >
+
+      </div>
+      <div class="col-sm-7" style="margin-top: 200px; font-size: 20px;">
+        <ul style="line-height: 40px;">
+          <h2 th:text="${product.title}"></h2>
+          <li th:text="${product.getFormat()}"></li>
+          <li th:utext="${#strings.replace(product.description, '\n', '<br/>')}"></li>
+          <li>
+            <label for="quantity">Số lượng:</label>
+            <select id="quantity" name="quantity">
+              <option th:each="num : ${#numbers.sequence(1, 10)}" th:value="${num}" th:text="${num}"></option>
+            </select>
+          </li>
+
+          <li>
+            <div th:each="product : ${product}">
+              <div class="size-selector">
+                <div th:each="size, sizeStat : ${product.sizes}">
+                  <input type="radio" th:id="'size' + ${sizeStat.index}" th:name="size" th:value="${size.id}" th:onclick="'updateAction(' + ${size.id} + ')'" />
+                  <label th:for="'size' + ${sizeStat.index}" th:text="${size.sizeLabel}"></label>
+                </div>
+              </div>
+            </div>
+          </li>
+          <img src="/sizeao.jpg" width="500" height="150">
+        </ul>
+        <a class="btn btn-danger" th:href="@{/LoginRegister/list}">Quay Lại</a>
+        <button type="submit" class="btn btn-success">Thêm vào giỏ hàng</button>
+      </div>
+    </div>
+  </article>
+</div>
+</form>
+<script>
+  function updateAction(sizeId) {
+    var form = document.getElementById('myForm');
+    form.action = '/LoginRegister/add/' + form.dataset.productid + '/' + sizeId;
+  }
+</script>
+</body>
+</html>

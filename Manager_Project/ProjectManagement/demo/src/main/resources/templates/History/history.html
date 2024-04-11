@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>List book</title>
+  <link rel="stylesheet" href="	https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js">
+  <link rel="stylesheet" href="/history.css">
+</head>
+<header>
+  <a th:href="@{/LoginRegister/home}"><img src="/Logo.png" alt="Logo"></a>
+  <!--  <img src="/Logo.png" alt="Logo">-->
+  <nav>
+    <ul>
+      <li><a th:href="@{/LoginRegister/list}">SHOP</a></li>
+      <li><a href="#">B RAY COLLAB'S</a></li>
+      <li><a th:href="@{/LoginRegister/new}">NEWS</a></li>
+      <li><a th:href="@{/LoginRegister/contact}">CONTACT</a></li>
+      <li><a th:href="@{/LoginRegister/about}">ABOUT</a></li>
+      <li><a th:href="@{/LoginRegister/history}">TRANSACTION</a></li>
+    </ul>
+  </nav>
+  <div class="header-container">
+    <div class="search-container">
+      <input type="text" placeholder="Tìm kiếm">
+      <button class="search-icon"><i class="fas fa-magnifying-glass"></i></button>
+    </div>
+    <!--        <button class="user-icon">-->
+    <!--            <a th:if="${userName != null}" th:href="@{/LoginRegister/profile}"> &lt;!&ndash; Kiểm tra nếu userName đã tồn tại (đã đăng nhập) &ndash;&gt;-->
+    <!--                <i class="fas fa-user"></i>-->
+    <!--            </a>-->
+    <!--            <a th:unless="${userName != null}" th:href="@{/LoginRegister/auth}"> &lt;!&ndash; Kiểm tra nếu userName chưa tồn tại (chưa đăng nhập) &ndash;&gt;-->
+    <!--                <i class="fas fa-user"></i>-->
+    <!--            </a>-->
+    <!--        </button>-->
+    <button class="user-icon">
+      <!-- If userName exists (user is logged in), show both icons with separate links -->
+      <a th:if="${userName != null}" th:href="@{/LoginRegister/profile}">
+        <i class="fas fa-user"></i> <!-- Link to profile -->
+      </a>
+      <a th:if="${userName != null}" th:href="@{/LoginRegister/logout}">
+        <i class="fa-solid fa-right-from-bracket"></i> <!-- Logout functionality -->
+      </a>
+      <!-- If userName doesn't exist (user is not logged in), link to auth -->
+      <a th:unless="${userName != null}" th:href="@{/LoginRegister/auth}">
+        <i class="fas fa-user"></i>
+      </a>
+    </button>
+
+    <button class="shopping-icon">
+      <a  th:href="@{/cart}">
+        <i class="fas fa-bag-shopping"></i>
+        <!--                <span id="cart-count" class="badge badge-pill badge-danger">10</span>-->
+        <span id="cart-count" th:if="${totalQuantity > 0}" th:text="${totalQuantity}" class="badge badge-pill badge-danger"></span>
+      </a>
+    </button>
+  </div>
+</header>
+<body>
+<h1>History</h1>
+<table class="table table-striped table-hover">
+  <tr>
+    <th>Thời gian</th>
+    <th>Sản phẩm</th>
+    <th>Giá</th>
+  </tr>
+  <tbody id="result">
+  <tr th:each="b : ${user}" th:object="${b}">
+    <td th:text="*{getTime()}"></td>
+    <td><img th:src="@{${b.product.img}}" alt="Product Image" class="product-image"/></td>
+    <td th:text="*{getProduct().getFormat()}"></td>
+    <td><a th:href="@{/LoginRegister/deleteHistory(id=${b.id})}" class="btn btn-danger">Delete</a></td>
+  </tr>
+  </tbody>
+</table>
+<div class="buttons-container">
+  <div class="button-left">
+    <a class="btn btn-success" th:href="@{/LoginRegister/list}">Quay lại trang chủ</a>
+  </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/Aboutt.css">
+    <!-- Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet" />
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" rel="stylesheet" />
+    <!-- MDB -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.4.2/mdb.min.css" rel="stylesheet" />
+    <!-- MDB -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.4.2/mdb.min.js"></script>
+    <title>Document</title>
+</head>
+<body>
+<header>
+    <a th:href="@{/LoginRegister/home}"><img src="/Logo.png" alt="Logo"></a>
+    <!--  <img src="/Logo.png" alt="Logo">-->
+    <nav>
+        <ul>
+            <li><a th:href="@{/LoginRegister/list}">SHOP</a></li>
+            <li><a href="#">B RAY COLLAB'S</a></li>
+            <li><a href="#">NEWS</a></li>
+            <li><a th:href="@{/LoginRegister/contact}">CONTACT</a></li>
+            <li><a th:href="@{/LoginRegister/about}">ABOUT</a></li>
+            <li><a th:href="@{/LoginRegister/history}">TRANSACTION</a></li>
+        </ul>
+    </nav>
+    <div class="header-container">
+        <button class="user-icon">
+            <!-- If userName exists (user is logged in), show both icons with separate links -->
+            <a th:if="${userName != null}" th:href="@{/LoginRegister/profile}">
+                <i class="fas fa-user"></i> <!-- Link to profile -->
+            </a>
+            <a th:if="${userName != null}" th:href="@{/LoginRegister/logout}">
+                <i class="fa-solid fa-right-from-bracket"></i> <!-- Logout functionality -->
+            </a>
+            <!-- If userName doesn't exist (user is not logged in), link to auth -->
+            <a th:unless="${userName != null}" th:href="@{/LoginRegister/auth}">
+                <i class="fas fa-user"></i>
+            </a>
+        </button>
+        <button class="shopping-icon">
+            <a  th:href="@{/cart}">
+                <i class="fas fa-bag-shopping"></i>
+                <!--                <span id="cart-count" class="badge badge-pill badge-danger">10</span>-->
+                <span id="cart-count" th:if="${totalQuantity > 0}" th:text="${totalQuantity}" class="badge badge-pill badge-danger"></span>
+            </a>
+        </button>
+    </div>
+</header>
+<section>
+    <div>
+        <img src="/abouthinh.png" alt="">
+        <h1 style="text-align: center;">______</h1>
+        <h2 style="text-align: center;"> Dainese Store About Us.</h2>
+        <p style="font-weight: bold; text-align: center;"> Con đường chinh phục Streetwear của thương hiệu Dainese
+            Store được bắt đầu từ 2017 tại Sài Gòn - Việt Nam, xuất phát ý tưởng về một thương hiệu Việt mang văn
+            hóa<br> đường phố
+            Với những kinh nghiệm gói ghém từ thương hiệu tiền thân The Yars Shop,
+            <br> anh Khoa Sen đã đã bắt đầu cuộc hành trình Dainese cùng những người bạn GenZ đầy nhiệt huyết và
+            sáng tạo.<br>
+        </p>
+        <p style="font-weight: bold; text-align: center;"> Không quá ồn ào hay phô trương, ‘Dainese’ tượng trưng cho
+            những giá trị nguyên bản nhất của cuộc sống:
+            đó là hiện thực gai góc của những ‘đồng tiền xương máu’, <br>của giá trị lao động đầy mồ hôi, bụi bẩn và
+            nước mắt. Dainese trở thành một thương hiệu của tinh thần thời trang mạnh mẽ, táo bạo nhưng vẫn gần gũi
+            và<br> dễ tiếp cận rộng rãi. Không dừng lại ở đó, Dainese muốn vượt
+            qua giới hạn của một thương hiệu thời trang đơn thuần và trở thành một biểu tượng<br> về văn hóa và
+            phong cách sống của những con người trẻ tuổi.</p>
+        <h2 style="text-align: center;">MISLESTONES</h2>
+        <p style="text-align: center;">Hãy cùng chúng tôi nhìn lại những dấu ấn trong chặng đường vừa qua.</p>
+        <img src="/test7.png" alt="">
+        <p style="font-weight: bold; text-align: center;"> Thương hiệu Dainese chính thức ra đời, với cửa hàng đầu
+            tiên tại 561 đường Sư Vạn Hạnh , Phường 13 , Quận 10, Thành phố Hồ Chí Minh.
+            <br> Cửa hàng thứ 2 tại The New Playground 26 Lý Tự Trọng, quận 1, thành phố Hồ Chí Minh..<br>
+        </p>
+        <img src="/test9.png" alt="">
+        <p style="font-weight: bold; text-align: center;"> Cửa hàng thứ 3 tại Central Market 4 , Phường Phạm Ngũ Lão
+            , Quận 1 , Thành phố Hồ Chí Minh.
+            Cửa hàng thứ 4 tại 326 Quang Trung , <br>Phường 10 , quận Gò Vấp, thành phố Hồ Chí Minh.</p>
+        <img src="/test10.png" alt="">
+        <p style="font-weight: bold; text-align: center;"> Cửa hàng thứ 5 tại 151A Phan Trung , Phường Tân Mai ,
+            Thành phố Biên Hòa.
+            <br> Cửa hàng thứ 6 tại 28 Yersin , Phường Hiệp Thành , thành phố Thủ Dầu Một.<br>
+        </p>
+        <img src="/test11.png" alt="">
+        <p style="font-weight: bold; text-align: center;"> Trải qua giai đoạn giãn cách xã hội suốt hơn 4 tháng do
+            đại dịch Covid-19, để duy trì hoạt động ở giai đoạn khó khăn này kèm với nhiều thay đổi và <br>
+            biến chuyển khó lường của thị trường,
+            nên lãnh đạo công ty quyết định rút gọn số lượng cửa hàng còn 4 cửa hàng .
+            Tuy nhiên vào lúc hết dịch nhờ vào
+            <br> sự săn đón và đồng hành của các bạn trẻ chúng tôi đã trở lại đầy tiềm năng hơn và sẵn sàng mở rộng
+            hơn để cùng sách bước với các bạn trẻ<br> nên chúng tôi đã mở cửa lại 2 cửa hàng đã đóng .
+            <br> Giai đoạn cuối 2021 cho đến Quý 2 - 2022 là giai đoạn chúng tôi biến chuyển tích cực về mặt cơ cấu
+            sản phẩm và tuyển dụng nhân sự và chúng tôi đã mở thêm 2 cửa hàng .<br>
+        </p>
+        <p style="font-weight: bold; text-align: center;"> Cửa hàng thứ 7 tại 52 Mẫu Thân , Phường An Phú , Thành
+            phố Cần Thơ.
+            <br> Cửa hàng thứ 8 tại 49-53 Hồ Đắc Din , Phường Nam Đồng , Quận Đống Đa , thành phố Thủ Dầu Một.
+        </p>
+        <h2 style="text-align: center;">VISION</h2>
+        <p style="font-weight: bold;text-align: center;">Với sứ mệnh “Dainese là nơi thể hiện cái tôi và đóng góp
+            giá trị cho văn hoá thời trang đường phố”
+            chúng tôi đã nâng tầm thương hiệu dựa trên những giá trị cốt lõi<br> và bền vững nhất, hướng đến đến mục
+            tiêu trở thành TOP 1 VIETNAMESE STREETWEAR BRAND.</p>
+        <img src="/test16.png" alt="">
+        <p style="font-weight: bold; text-align: center;"> Những sản phẩm của Dainese mang đậm dấu ấn kết hợp giữa
+            văn hóa phương Tây và Phương Đông, xác lập một ngôn ngữ sáng tạo rất riêng,<br> đầy mạo hiểm và mới mẻ.
+            Chất liệu cảm hứng được Dainese chắt lọc từ sự đa sắc, đa diện của dòng chảy cuộc sống hàng ngày;<br>
+            pha trộn
+            cùng cảm hứng nghệ thuật đương đại để tạo nên một tiểu vùng văn hóa rất riêng của Dainese.</p>
+        <img src="/test23.png" alt="">
+        <!-- <img src="./test21.png" alt="">         -->
+    </div>
+</section>
+</body>
+<footer class="footer">
+    <div class="footer-container">
+
+        <div class="footer-column">
+            <h2>Hệ Thống Cửa Hàng</h2>
+            <ul>
+                <i class="fas fa-map-marker-alt"></i> Chi Nhánh Hồ Chí Minh</p>
+                <p>Quận 10 <span class="subtext">-561 Sư Vạn Hạnh, Phường 13.</span></p>
+                <p>Quận 1 <span class="subtext">-The New Playground 26 Lý Tự Trọng,Phường Bến Nghé.</span></p>
+                <p>Quận 1 <span class="subtext">-Central Market 4 Phạm Ngũ Lão,Phường Phạm Ngũ Lão.</span></p>
+                <p>Quận Gò Vấp <span class="subtext">-326 Quang Trung, Phường 10.</span></p>
+                <i class="fas fa-map-marker-alt"></i> Chi Nhánh Biên Hòa:
+            </ul>
+            <p>
+            <p>TP.Biên Hòa <span class="subtext">-151A Phan Trung, Phường Tân Mai.</span></p>
+            <i class="fas fa-map-marker-alt"></i> Chi Nhánh Bình Dương:</p>
+            <p>TP.Thủ Dầu Một <span class="subtext">-28 Yersin,Phường Hiệp Thành.</span></p>
+            <i class="fas fa-map-marker-alt"></i> Chi Nhánh Cần Thơ </p>
+            <p>Quận Ninh Kiều <span class="subtext">-52 Mẫu Thân,Phường An Phú.</span></p>
+            <i class="fas fa-map-marker-alt"></i> Chi Nhánh Hà Nội:</p>
+            <p>Đống Đa <span class="subtext">-49-53 Hồ Đắc Di,Phường Nam Đồng.</span></p>
+            <p><i class="fas fa-phone"></i> 0933 800 190 - 1900252557</p>
+            <p><i class="fas fa-envelope"></i> csteamdcs@gmail.com</p>
+            </ul>
+        </div>
+        <div class="footer-column">
+            <h2>Mạng Xã Hội</h2>
+            <div class="social-icons">
+                <a href="#"><i class="fab fa-facebook"></i></a>
+                <a href="#"><i class="fa-brands fa-youtube"></i></a>
+                <a href="#"><i class="fa-brands fa-instagram"></i>
+                </a>
+            </div>
+        </div>
+
+        <div>
+            <h2>Chính Sách</h2>
+            <div class="policy-list">
+                <li>Chính sách bảo mật</li>
+                <li>FAQ</li>
+                <li>Chính sách Thẻ Thành viên</li>
+                <li>Chính sách Bảo hành & Đổi trả</li>
+                <li>Chính sách giao hàng hóa tốc</li>
+            </div>
+        </div>
+
+        <div class="fanpage">
+            <h2>Fanpage</h2>
+            <img src="fanpage-image.jpg" alt="Fanpage" />
+        </div>
+
+    </div>
+</footer>
+
+</html>

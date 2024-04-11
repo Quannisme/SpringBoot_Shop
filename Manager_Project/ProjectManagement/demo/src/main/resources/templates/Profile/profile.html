@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Font Awesome -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet" />
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" rel="stylesheet" />
+  <!-- MDB -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.4.2/mdb.min.css" rel="stylesheet" />
+  <!-- MDB -->
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.4.2/mdb.min.js"></script>
+  <title>Profiles</title>
+  <link rel="stylesheet" href="/profile.css">
+</head>
+<style>
+  .required {
+    color: red;
+  }
+  /* phần css footer của thiện */
+  .subtext {
+    font-size: 0.9em;
+    color: #666;
+
+  }
+  .policy-list {
+    list-style-type: disc;
+    padding-left: 20px;
+  }
+
+  .policy-list li {
+    margin-bottom: 5px;
+  }
+  .footer {
+    background-color: #f1f1f1;
+    padding: 20px 0;
+    font-size: 14px;
+  }
+  .footer-container {
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 15px;
+  }
+  .footer-column {
+    margin: 10px;
+    min-width: 180px;
+  }
+  .footer-column h3 {
+    font-size: 16px;
+    color: #333;
+    margin-bottom: 15px;
+  }
+  .footer-column ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  .footer-column ul li {
+    margin-bottom: 10px;
+  }
+  .footer-column ul li a {
+    color: #666;
+    text-decoration: none;
+  }
+  .footer-column ul li a:hover {
+    text-decoration: underline;
+  }
+  .social-icons {
+    display: flex;
+  }
+  .social-icons img {
+    width: 24px;
+    margin-right: 10px;
+  }
+  .fanpage {
+    margin: 10px;
+    min-width: 180px;
+  }
+  .fanpage img {
+    width: 100%;
+    height: auto;
+  }
+</style>
+
+<body>
+<!-- html logo của quân -->
+<header>
+  <!-- logo thương hiệu -->
+  <a th:href="@{/LoginRegister/home}"><img src="/Logo.png" alt="Logo"></a>
+  <nav>
+    <ul>
+      <li><a th:href="@{/LoginRegister/list}">SHOP</a></li>
+      <li><a href="#">B RAY COLLAB'S</a></li>
+      <li><a href="#">NEWS</a></li>
+      <li><a th:href="@{/LoginRegister/contact}">CONTACT</a></li>
+      <li><a th:href="@{/LoginRegister/about}">ABOUT</a></li>
+      <li><a th:href="@{/LoginRegister/history}">TRANSACTION</a></li>
+    </ul>
+  </nav>
+  <div class="header-container">
+    <button class="user-icon"><i class="fas fa-user"></i></button>
+    <button class="shopping-icon"><i class="fas fa-bag-shopping"></i></button>
+  </div>
+
+</header>
+
+
+<section>
+  <!-- Profile của tùng -->
+  <div class="container">
+    <div class="item">
+<!--      thêm 1 thằng id ẩn vào-->
+      <!-- <div class="contact">
+          <div class="first-text"></div>
+      <img src="logoshop.jpg" alt="" class="image">
+      </div> -->
+      <!-- <div class="submit-form"> -->
+      <form th:action="@{/LoginRegister/profile}" method="post" th:object="${userOld}">
+        <input type="hidden" th:field="*{id}">
+        <input type="hidden" th:field="*{password}">
+        <input type="hidden" th:field="*{userName}">
+        <h2 class="third-text"style="text-align: center;" >User Information</h2>
+        <div class="input-box">
+          <label>Full Name<span class="required">*</span></label>
+          <input type="text" th:field="*{name}" class="input" placeholder="Vui lòng điền tên của bạn"required>
+          <span>
+                <p th:errors="*{name}" class="text-danger"></p>
+            </span>
+        </div>
+        <div class="input-box">
+          <label>Date of Birth <span class="required">*</span></label>
+          <input type="date" th:field="*{birthDay}" class="input" placeholder="Vui lòng điền ngày tháng năm sinh của của bạn"required>
+        </div>
+        <div class="input-box">
+          <label>Gender</label><br>
+          <input type="radio" th:field="*{gender}" value="true" id="male" name="gender" required>
+          <label for="male">Male</label>
+          <input type="radio" th:field="*{gender}" value="false" id="female" name="gender" required>
+          <label for="female">Female</label>
+        </div>
+        <div class="input-box">
+          <label>Identity card <span class="required">*</span></label>
+          <input type="number" th:field="*{idCard}" class="input" placeholder=" Vui lòng điền mã căn cước của bạn "required>
+          <span>
+                <p th:errors="*{idCard}" class="text-danger"></p>
+            </span>
+        </div>
+        <div class="input-box">
+          <label>Phone <span class="required">*</span></label>
+          <input type="text" th:field="*{phone}" class="input" placeholder="Vui lòng điền số điện thoại của bạn" required>
+          <span>
+        <p th:errors="*{phone}" class="text-danger"></p>
+    </span>
+        </div>
+        <div class="input-box">
+          <label >Email</label>
+          <input type="text" class="input" th:field="*{email}" placeholder="Vui lòng điền Email của bạn"required>
+        </div>
+        <div class="input-box">
+          <label>Address <span class="required">*</span></label>
+          <input type="text" th:field="*{address}" class="input" placeholder="Vui lòng điền địa chỉ của bạn"required>
+        </div>
+        <br>   <input type="submit" class="btn btn-success" value="Update"/>
+      </form>
+    </div>
+    <!-- </div> -->
+  </div>
+</section>
+
+
+<!-- phần html footer của thiện -->
+
+<!-- footer -->
+<head>
+  <footer class="footer">
+    <div class="footer-container">
+
+
+      <div class="footer-column">
+        <h2>Hệ Thống Cửa Hàng</h2>
+        <ul>
+          <i class="fas fa-map-marker-alt"></i> Chi Nhánh Hồ Chí Minh</p>
+          <p>Quận 10 <span class="subtext">-561 Sư Vạn Hạnh, Phường 13.</span></p>
+          <p>Quận 1 <span class="subtext">-The New Playground 26 Lý Tự Trọng,Phường Bến Nghé.</span></p>
+          <p>Quận 1 <span class="subtext">-Central Market 4 Phạm Ngũ Lão,Phường Phạm Ngũ Lão.</span></p>
+          <p>Quận Gò Vấp <span class="subtext">-326 Quang Trung, Phường 10.</span></p>
+          <i class="fas fa-map-marker-alt"></i> Chi Nhánh Biên Hòa: </ul><p>
+        <p>TP.Biên Hòa <span class="subtext">-151A Phan Trung, Phường Tân Mai.</span></p>
+        <i class="fas fa-map-marker-alt"></i> Chi Nhánh Bình Dương:</p>
+        <p>TP.Thủ Dầu Một <span class="subtext">-28 Yersin,Phường Hiệp Thành.</span></p>
+        <i class="fas fa-map-marker-alt"></i> Chi Nhánh Cần Thơ </p>
+        <p>Quận Ninh Kiều <span class="subtext">-52 Mẫu Thân,Phường An Phú.</span></p>
+        <i class="fas fa-map-marker-alt"></i> Chi Nhánh Hà Nội:</p>
+        <p>Đống Đa <span class="subtext">-49-53 Hồ Đắc Di,Phường Nam Đồng.</span></p>
+        <p><i class="fas fa-phone"></i> 0933 800 190 - 1900252557</p>
+        <p><i class="fas fa-envelope"></i> csteamdcs@gmail.com</p>
+        </ul>
+      </div>
+      <div class="footer-column">
+        <h2>Mạng Xã Hội</h2>
+        <div class="social-icons">
+          <a href="https://www.facebook.com/thienleyi/"><i class="fa-brands fa-facebook"></i></a>
+          <a href="#"><i class="fa-brands fa-youtube"></i></a>
+          <a href="#"><i class="fa-brands fa-instagram"></i>
+          </a>
+        </div>
+      </div>
+
+      <div>
+        <h2>Chính Sách</h2>
+        <div class="policy-list">
+          <li>Chính sách bảo mật</li>
+          <li>FAQ</li>
+          <li>Chính sách Thẻ Thành viên</li>
+          <li>Chính sách Bảo hành & Đổi trả</li>
+          <li>Chính sách giao hàng hóa tốc</li>
+        </div>
+      </div>
+
+      <div class="fanpage">
+        <h2>Fanpage</h2>
+        <img src="fanpage-image.jpg" alt="Fanpage"/>
+      </div>
+
+    </div>
+  </footer>
+</body>
+</html>

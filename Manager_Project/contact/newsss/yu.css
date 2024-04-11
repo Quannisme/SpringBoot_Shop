@@ -1,0 +1,106 @@
+.dashes {
+    text-align: center; /* Căn giữa chữ "---" */
+    margin-top: -10px; /* Khoảng cách phía trên dấu gạch ngang */
+    margin-bottom: 0px; /* Khoảng cách phía dưới dấu gạch ngang */
+    font-size: 24px; /* Kích thước của dấu gạch ngang */
+    letter-spacing: 1px; /* Khoảng cách giữa các dấu gạch ngang */
+    color: #333; /* Màu của dấu gạch ngang */
+  }
+
+  .search-container {
+    display: flex; /* Cho phép các item bên trong được linh hoạt theo dõi */
+    justify-content: flex-end; /* Đặt các item về phía cuối của container, tức là bên phải */
+    margin-top: 10px; /* Khoảng cách từ phần trên */
+    margin-bottom: 10px; /* Khoảng cách từ phần dưới */
+  }
+
+  .search-container input[type="text"] {
+    padding: 10px;
+    margin-right: 5px; /* Khoảng cách giữa ô nhập văn bản và nút */
+    border: 1px solid #ccc;
+    border-radius: 4px; /* Bo tròn góc cho ô nhập văn bản */
+    font-size: 16px; /* Kích thước chữ */
+  }
+
+  .search-container button {
+    padding: 10px;
+    background: #f0f0f0;
+    border: 1px solid #ccc;
+    border-radius: 4px; /* Bo tròn góc cho nút */
+    cursor: pointer; /* Biểu tượng cursor khi di chuyển chuột vào nút */
+  }
+
+  .search-container button i {
+    font-size: 16px; /* Kích thước icon hoặc chữ trong nút */
+  }
+  .header-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 20px;
+  }
+  .store-info {
+    text-align: right;
+  }
+  
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .search-container {
+    float: right; /* Đẩy khối tìm kiếm sang phải */
+    margin-right: 50px; /* Giả định khoảng cách từ cạnh phải */
+    margin-top: 50px; /* Giả định khoảng cách từ cạnh trên */
+  }
+  
+  .search-container input[type="text"] {
+    padding: 10px;
+    width: 250px; /* Giả định chiều rộng của khung nhập */
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px; /* Giả định kích thước font */
+  }
+  
+  .search-container button {
+    padding: 10px 15px;
+    background-color: #333;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px; /* Đảm bảo kích thước icon và text nhất quán */
+  }
+  
+  /* Sử dụng FontAwesome để thêm icon vào nút */
+  .fa-search {
+    /* Các thuộc tính cần thiết cho icon của FontAwesome */
+  }
+  
+  /* Đảm bảo các khoảng cách giữa các phần tử được điều chỉnh đúng đắn */
+  .search-container button i {
+    margin-right: 0; /* Nếu có văn bản, khoảng cách này có thể cần điều chỉnh */
+  }
+  
+  @media (max-width: 768px) {
+    .header-row {
+      flex-direction: column;
+    }
+  
+    .search-container {
+      width: 100%;
+      margin-bottom: 20px;
+    }
+  }
+  .centered {
+    text-align: center; /* Căn giữa nội dung */
+  }
+  
+  /* Đảm bảo rằng container cũng được căn giữa nếu cần */
+  .container {
+    display: flex;
+    justify-content: center; /* Căn giữa theo chiều ngang */
+    align-items: center; /* Căn giữa theo chiều dọc nếu muốn */
+  }
+  
